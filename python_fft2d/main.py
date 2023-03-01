@@ -41,36 +41,29 @@ image_fourier = numpy.fft.fftshift(numpy.fft.fft2(image))
 image_fourier_lowpass = image_filter(image_fourier, 30, False)
 image_fourier_highpass = image_filter(image_fourier, 30, True)
 
-# Apply inverse fft to both pictures
+# Apply inverse fft to all pictures
 image_reconstructed = numpy.fft.ifft2(image_fourier)
 image_reconstructed_lowpass = numpy.fft.ifft2(image_fourier_lowpass)
 image_reconstructed_highpass = numpy.fft.ifft2(image_fourier_highpass)
 
 # Generate output files
-plot.figure(num=None, figsize=(8, 6), dpi=80)
 plot.imshow(image, cmap='gray')
 plot.savefig(os.path.join(output_path, "image.png"))
 
-plot.figure(num=None, figsize=(8, 6), dpi=80)
 plot.imshow(numpy.log(abs(image_fourier), where=abs(image_fourier) > 0), cmap='gray')
 plot.savefig(os.path.join(output_path, "image_fourier.png"))
 
-plot.figure(num=None, figsize=(8, 6), dpi=80)
 plot.imshow(numpy.log(abs(image_fourier_lowpass), where=abs(image_fourier_lowpass) > 0), cmap='gray')
 plot.savefig(os.path.join(output_path, "image_fourier_lowpass.png"))
 
-plot.figure(num=None, figsize=(8, 6), dpi=80)
 plot.imshow(numpy.log(abs(image_fourier_highpass), where=abs(image_fourier_highpass) > 0), cmap='gray')
 plot.savefig(os.path.join(output_path, "image_fourier_highpass.png"))
 
-plot.figure(num=None, figsize=(8, 6), dpi=80)
 plot.imshow(abs(image_reconstructed), cmap='gray')
 plot.savefig(os.path.join(output_path, "image_reconstructed.png"))
 
-plot.figure(num=None, figsize=(8, 6), dpi=80)
 plot.imshow(abs(image_reconstructed_lowpass), cmap='gray')
 plot.savefig(os.path.join(output_path, "image_reconstructed_lowpass.png"))
 
-plot.figure(num=None, figsize=(8, 6), dpi=80)
 plot.imshow(abs(image_reconstructed_highpass), cmap='gray')
 plot.savefig(os.path.join(output_path, "image_reconstructed_highpass.png"))
