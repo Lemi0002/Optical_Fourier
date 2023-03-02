@@ -8,7 +8,8 @@ import PIL as pil
 input_path = "drawables/harold.jpg"
 output_path = "output"
 
-def image_filter(image, radius, highpass = True):
+
+def image_filter(image, radius, highpass=True):
     image_modified = image.copy()
     size_x, size_y = image_modified.shape
     position_x = size_x / 2 - 0.5
@@ -17,15 +18,19 @@ def image_filter(image, radius, highpass = True):
     for x in range(size_x):
         for y in range(size_y):
             distance = math.sqrt((position_x - x)**2 + (position_y - y)**2)
-            if(highpass == False and radius < distance) or (highpass == True and radius >= distance):
+            if (highpass == False and radius < distance) or (highpass == True and radius >= distance):
                 image_modified[x][y] = 0
 
     return image_modified
 
+
 # Try to read the picture and convert it to grey scale
 try:
-    image = pil.Image.open(input_path)
-    image = image.convert("L")
+    image_input = pil.Image.open(input_path)
+    image = image_input.convert("L")
+    image_rgb = image_input.convert("RGB")
+    print(type(image_rgb))
+    print(image_rgb.getpixel((0, 0)))
 except FileNotFoundError as exception:
     print(exception)
     exit()
@@ -50,13 +55,16 @@ image_reconstructed_highpass = numpy.fft.ifft2(image_fourier_highpass)
 plot.imshow(image, cmap='gray')
 plot.savefig(os.path.join(output_path, "image.png"))
 
-plot.imshow(numpy.log(abs(image_fourier), where=abs(image_fourier) > 0), cmap='gray')
+plot.imshow(numpy.log(abs(image_fourier),
+            where=abs(image_fourier) > 0), cmap='gray')
 plot.savefig(os.path.join(output_path, "image_fourier.png"))
 
-plot.imshow(numpy.log(abs(image_fourier_lowpass), where=abs(image_fourier_lowpass) > 0), cmap='gray')
+plot.imshow(numpy.log(abs(image_fourier_lowpass),
+            where=abs(image_fourier_lowpass) > 0), cmap='gray')
 plot.savefig(os.path.join(output_path, "image_fourier_lowpass.png"))
 
-plot.imshow(numpy.log(abs(image_fourier_highpass), where=abs(image_fourier_highpass) > 0), cmap='gray')
+plot.imshow(numpy.log(abs(image_fourier_highpass),
+            where=abs(image_fourier_highpass) > 0), cmap='gray')
 plot.savefig(os.path.join(output_path, "image_fourier_highpass.png"))
 
 plot.imshow(abs(image_reconstructed), cmap='gray')
