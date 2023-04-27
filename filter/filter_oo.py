@@ -5,7 +5,7 @@ Script to evaluate the correspondence between a frequency and its position on th
 import matplotlib.pyplot as plot
 import numpy
 import os
-from filter_module import SinWave, image_filter
+from filter_module import Aperture, image_filter
 
 output_path = "output"
 
@@ -14,21 +14,21 @@ width = 20*int(frequency_scale*2*numpy.pi) #allow multiple repetitions for bette
 height = width
 
 # Create sin wave with superposition of multiple waves
-wave = SinWave(width, height, frequency_scale)
-wave.add(1, direction="x", dc=100)
-wave.add(2, direction="x")
-wave.add(1, direction="y")
-wave.add(2, direction="y")
+aperture = Aperture(width, height, frequency_scale)
+# aperture.add_wave(1, direction="x", dc=100)
+# aperture.add_wave(2, direction="x")
+# aperture.add_wave(1, direction="y")
+# aperture.add_wave(2, direction="y")
+aperture.add_grid(50, 100)
 
 # Unmodified wave
 plot.subplot(141)
-plot.imshow(wave.canvas, cmap='gray')
+plot.imshow(aperture.canvas, cmap='gray')
 
 # FFT2
 plot.subplot(142)
-fourier = numpy.fft.fftshift(numpy.fft.fft2(wave.canvas))
-plot.imshow(numpy.log(abs(fourier),
-        where=abs(fourier) > 0), cmap='gray')
+fourier = numpy.fft.fftshift(numpy.fft.fft2(aperture.canvas))
+plot.imshow(abs(fourier), cmap='gray', vmax = 6e7)
 x_width = 50
 y_width = 50
 plot.xlim(int(width/2 - x_width), int(width/2 + x_width))
@@ -36,8 +36,8 @@ plot.ylim(int(height/2 - y_width), int(height/2 + y_width))
 
 # FFT2 after filter
 plot.subplot(143)
-image_fourier_lowpass = image_filter(fourier, 22, highpass=False)
-plot.imshow(abs(image_fourier_lowpass), cmap="gray")
+image_fourier_lowpass = image_filter(fourier, 30, highpass=True)
+plot.imshow(abs(image_fourier_lowpass), cmap="gray", vmax = 6e7)
 plot.xlim(int(width/2 - x_width), int(width/2 + x_width))
 plot.ylim(int(height/2 - y_width), int(height/2 + y_width))
 

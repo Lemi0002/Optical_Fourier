@@ -1,14 +1,14 @@
 import numpy
 
 
-class SinWave:
+class Aperture:
     def __init__(self, width, height, frequency_scale) -> None:
         self.width = width
         self.height = height
         self.frequency_scale = frequency_scale
         self.canvas = numpy.zeros((self.height, self.width), dtype=numpy.uint8)
 
-    def add(self, frequency, direction="x", dc=0, amplitude=50):
+    def add_wave(self, frequency, direction="x", dc=0, amplitude=50):
         """
         Add a sin wave to the canvas
         """
@@ -29,6 +29,22 @@ class SinWave:
             case default:
                 raise ValueError(
                     f"Direction has to be x or y but is {direction}")
+
+    def add_grid(self, a, b):
+        """
+        Add a grid to the canvas
+        a is the material, b is the void
+        """
+
+        period = a + b
+
+        for x in range(self.width):
+            if (x % period) > b:
+                self.canvas[:, x] = 255
+
+        for y in range(self.height):
+            if (y % period) > b:
+                self.canvas[y, :] = 255
 
 
 def image_filter(image, radius, highpass=True):
