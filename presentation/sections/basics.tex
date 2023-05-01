@@ -1,0 +1,85 @@
+\section{Grundlagen}
+
+\begin{frame}{Grundlagen - Beugung von Wellen}
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/beugung_von_wasserwellen.png}
+\end{frame}
+
+\begin{frame}{Grundlagen - Prinzip von Huygens}
+    \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/huygens.pdf}
+\end{frame}
+
+\begin{frame}{Grundlagen - Wellendarstellung}
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/welle.pdf}
+    \end{center}
+    \begin{equation*}
+        \zeta(x, t)
+        =
+        \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{x})}
+    \end{equation*}
+    \begin{equation*}
+        k
+        =
+        \frac{\omega}{u}
+        =
+        \frac{2 \pi}{\lambda}
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Grundlagen - Maxwell}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/maxwell.pdf}
+            \end{center}
+        \end{column}
+
+        \begin{column}{0.5\textwidth}
+            \pause
+            \begin{block}{Block}
+                \begin{align*}
+                    \oint_{S=\partial V} \varepsilon\vec{E} \cdot\, d\vec{S}
+                    &=
+                    \int_{V}\rho\, dV
+                    \\
+                    \int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot 1 \cdot r\, d\varphi dl
+                    &=
+                    Q
+                    \\
+                    2\pi ra\varepsilon E
+                    &=
+                    Q
+                \end{align*}
+            \end{block}
+            \pause
+            \begin{exampleblock}{dfasdf Example block}
+                \begin{equation*}
+                    E(r)
+                    =
+                    \frac{Q}{2\pi\varepsilon a} \cdot \frac{1}{r}
+                    =
+                    C \cdot \frac{1}{r}
+                \end{equation*}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Grundlagen - Beugungsintegral}
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/derivation.pdf}
+    \end{center}
+    % \begin{equation*}
+    %     E(y_p, t)
+    %     =
+    %     C\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+    % \end{equation*}
+    \begin{equation}
+        dE
+        =
+        E(r) \cdot \zeta(r, t) \cdot dy
+        =
+        \frac{C}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
+    \end{equation}
+\end{frame}
