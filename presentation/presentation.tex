@@ -123,26 +123,38 @@
 \end{frame}
 
 \begin{frame}{Grundlagen - Maxwell}
-    \begin{align*}
-        \oint_{S=\partial V} \varepsilon\vec{E} \cdot\, d\vec{S}
-        &=
-        \int_{V}\rho\, dV
-        \\
-        \int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot 1 \cdot r\, d\varphi dl
-        &=
-        Q
-        \\
-        2\pi ra\varepsilon E
-        &=
-        Q
-    \end{align*}
-    \begin{equation*}
-        E(r)
-        =
-        \frac{Q}{2\pi\varepsilon a} \cdot \frac{1}{r}
-        =
-        C \cdot \frac{1}{r}
-    \end{equation*}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/maxwell.pdf}
+            \end{center}
+        \end{column}
+
+        \begin{column}{0.5\textwidth}
+            \pause
+            \begin{align*}
+                \oint_{S=\partial V} \varepsilon\vec{E} \cdot\, d\vec{S}
+                &=
+                \int_{V}\rho\, dV
+                \\
+                \int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot 1 \cdot r\, d\varphi dl
+                &=
+                Q
+                \\
+                2\pi ra\varepsilon E
+                &=
+                Q
+            \end{align*}
+            \pause
+            \begin{equation*}
+                E(r)
+                =
+                \frac{Q}{2\pi\varepsilon a} \cdot \frac{1}{r}
+                =
+                C \cdot \frac{1}{r}
+            \end{equation*}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Grundlagen - Beugungsintegral}
