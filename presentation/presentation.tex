@@ -23,7 +23,7 @@
 % PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass{beamer}
+\documentclass[9pt]{beamer}
 \usepackage[ngerman]{babel}
 
 \usetheme{focus} % Use the Focus theme supplied with the template
@@ -37,6 +37,12 @@
 %------------------------------------------------
 
 \usepackage{booktabs} % Required for better table rules
+
+% Change display spacing
+\newcommand{\zerodisplayskips}{%
+    \setlength{\abovedisplayskip}{-5pt}
+    \setlength{\belowdisplayskip}{0pt}}
+\appto{\normalsize}{\zerodisplayskips}
 
 \title{Optische Fouriertransformation}
 \subtitle{MathSem 2023}
