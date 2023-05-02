@@ -25,16 +25,18 @@
 
 \documentclass[9pt]{beamer}
 \usepackage[ngerman]{babel}
+\usepackage{catchfile}                      % used for gitHash extraction
+\usepackage{xstring}                        % used for gitHash extraction
 
-\usetheme{focus} % Use the Focus theme supplied with the template
-% Add option [numbering=none] to disable the footer progress bar
-% Add option [numbering=fullbar] to show the footer progress bar as always full with a slide count
+\usetheme{focus}
 
-% Uncomment to enable the ice-blue theme
-% \definecolor{main}{RGB}{92, 138, 168}
-% \definecolor{background}{RGB}{240, 247, 255}
-
-%------------------------------------------------
+% Git hash extraction and custom cmd
+\CatchFileDef{\headfull}{../.git/HEAD.}{}
+\StrGobbleRight{\headfull}{1}[\head]
+\StrBehind[2]{\head}{/}[\branch]
+\IfFileExists{../.git/refs/heads/\branch.}{%
+    \CatchFileDef{\commit}{../.git/refs/heads/\branch.}{}}{%
+    \newcommand{\commit}{\dots~(in \emph{packed-refs})}}
 
 \usepackage{booktabs} % Required for better table rules
 
@@ -66,13 +68,15 @@
 \end{frame}
 
 % Overview
-\begin{frame}{Heutige Ziele}
-    \begin{itemize}
-        \item Beugung im Allgemeinen
-        \item Herleitung des Beugungsintegrals
-        \item Versuch
-        \item Anwendungen
-    \end{itemize}
+\begin{frame}<1>[label=opt:goals]{Heutige Ziele}
+    \begin{block}<1->{\strut \only<3>{Ziele erreicht?}}
+        \begin{itemize}
+            \item Was ist Beugung?
+            \item Woher kommt die Fouriertransformation?
+            \item Wie geht das praktisch?
+            \item Für was ist das nützlich?
+        \end{itemize}
+    \end{block}
 \end{frame}
 
 % Sections
@@ -80,14 +84,7 @@
 \input{sections/experiment.tex}
 \input{sections/examples.tex}
 
-% End
-\begin{frame}{Ziel erreicht?}
-    \begin{itemize}
-        \item Was ist Beugung?
-        \item Wie kommt die Fouriertransformation zustande?
-        \item Für was ist das nützlich?
-    \end{itemize}
-\end{frame}
+\againframe<2-3>{opt:goals}
 
 \begin{frame}[noframenumbering]
     \begin{tikzpicture}[overlay, remember picture]
