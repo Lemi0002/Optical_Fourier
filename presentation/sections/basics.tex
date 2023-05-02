@@ -33,21 +33,35 @@
 \end{frame}
 
 \begin{frame}{Grundlagen - Wellendarstellung}
-    \begin{center}
-        \includegraphics[width=0.7\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/welle.pdf}
-    \end{center}
-    \begin{equation*}
-        \zeta(x, t)
-        =
-        \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{x})}
-    \end{equation*}
-    \begin{equation*}
-        k
-        =
-        \frac{\omega}{u}
-        =
-        \frac{2 \pi}{\lambda}
-    \end{equation*}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/welle.pdf}
+            \end{center}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}<1->{Welle aus Physik 3}
+                \begin{align*}
+                    \zeta(x, t)
+                    &=
+                    \zeta_0 \cdot \cos(\omega t - \vec{k}\cdot\vec{x})
+                    \\
+                    k
+                    &=
+                    \frac{\omega}{u}
+                    =
+                    \frac{2 \pi}{\lambda}
+                \end{align*}
+            \end{block}
+            \begin{exampleblock}<2->{Komplexwertiger Zeiger}
+                \begin{equation*}
+                    \zeta(x, t)
+                    =
+                    \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{x})}      
+                \end{equation*}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Grundlagen - Maxwell}
@@ -97,16 +111,90 @@
     \begin{center}
         \includegraphics[width=0.7\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/derivation.pdf}
     \end{center}
+    \begin{block}{Geometrie gemäss Skizze}
+        \begin{equation*}
+            r
+            =
+            \sqrt{l^2 + (y_p-y)^2}
+            =
+            l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
+        \end{equation*}
+    \end{block}
     % \begin{equation*}
     %     E(y_p, t)
     %     =
     %     C\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
     % \end{equation*}
-    \begin{equation}
-        dE
-        =
-        E(r) \cdot \zeta(r, t) \cdot dy
-        =
-        \frac{C}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
-    \end{equation}
+    % \begin{equation}
+    %     dE
+    %     =
+    %     E(r) \cdot \zeta(r, t) \cdot dy
+    %     =
+    %     \frac{C}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
+    % \end{equation}
+\end{frame}
+
+\begin{frame}{Grundlagen - Beugungsintegral}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/derivation.pdf}
+        \end{column}
+
+        \begin{column}<1->{0.5\textwidth}
+            \begin{block}<1->{Geometrie gemäss Skizze}
+                \begin{equation*}
+                    r
+                    =
+                    \sqrt{l^2 + (y_p-y)^2}
+                    =
+                    l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
+                \end{equation*}
+            \end{block}
+            \begin{block}<1->{Viele kleine Einflüsse}
+                \begin{equation*}
+                    dE
+                    =
+                    E(r) \cdot \zeta(r, t) \cdot dy
+                    =
+                    \frac{C}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
+                \end{equation*}
+            \end{block}
+            \begin{block}<2->{Integriert über die Blende}
+                \begin{align*}
+                    E(y_p, t)
+                    &=
+                    \int_{y_b}^{y_b + b} E(r) \cdot \zeta(r, t) \cdot \,dy \\
+                    &=
+                    \int_{y_b}^{y_b+b}C\zeta_0 \cdot \frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+                    \end{align*}
+            \end{block}      
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Grundlagen - Beugungsintegral}
+    \begin{block}<1->{Integriert über die Blende (cont.)}
+        \begin{equation*}
+            E(y_p, t)
+            =
+            C\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+            \end{equation*}
+    \end{block}
+    \begin{block}<2->{Blendenfunktion anstatt ein einzelner Spalt}
+        \begin{equation*}
+            f(y)
+            \in
+            [0, 1]
+            \end{equation*}
+    \end{block}
+    \begin{exampleblock}<3->{Allgemeines Beugungsintegral}
+        \begin{equation*}
+            E(y_p, t)
+            =
+            C\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+            .
+            \end{equation*}
+    \end{exampleblock}
+    \strut \only<4->{\alert<4->{Nicht fundamental auflösbar} $\Longrightarrow$ Fresnel \& Fraunhofer Approximationen}  
 \end{frame}
