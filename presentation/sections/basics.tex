@@ -32,6 +32,26 @@
     \end{tikzpicture}
 \end{frame}
 
+\begin{frame}{Grundlagen - Problemstellung}
+    \begin{columns}
+        \begin{column}{0.3\textwidth}
+            \includegraphics[width=\linewidth, trim={8cm, 1cm, 0, 0}, clip]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/huygens.pdf}
+        \end{column}
+        \begin{column}{0.7\textwidth}
+            \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/derivation.pdf}
+        \end{column}
+    \end{columns}
+
+    \begin{block}<2->{Ziel}
+        Berechnen der Überlagerung aller Wellen am Auswertungspunkt $P(x_p, y_p)$.
+
+        \begin{itemize}
+            \item<3-> Wie kann eine Welle beschrieben werden?
+            \item<4-> Wie verhält sich das elektrische Feld?
+        \end{itemize}
+    \end{block}
+\end{frame}
+
 \begin{frame}{Grundlagen - Wellendarstellung}
     \begin{columns}
         \begin{column}{0.5\textwidth}
@@ -40,11 +60,18 @@
             \end{center}
         \end{column}
         \begin{column}{0.5\textwidth}
-            \begin{block}<1->{Welle aus Physik 3 \cite{opt:HSR:Physik2}}
+            \begin{block}<1->{Differentialgleichung}
+                \begin{equation*}
+                    \frac{\partial^2\zeta(x, t)}{\partial t^2}
+                    =
+                    u^2 \cdot \frac{\partial^2\zeta(x, t)}{\partial x^2}
+                \end{equation*}
+            \end{block}
+            \begin{block}<2->{Welle aus Physik 3 \cite{opt:HSR:Physik2}}
                 \begin{align*}
                     \zeta(x, t)
                     &=
-                    \zeta_0 \cdot \cos(\omega t - \vec{k}\cdot\vec{x})
+                    \zeta_0 \cdot \sin(\omega t - \vec{k}\cdot\vec{x})
                     \\
                     k
                     &=
@@ -53,7 +80,7 @@
                     \frac{2 \pi}{\lambda}
                 \end{align*}
             \end{block}
-            \begin{exampleblock}<2->{Komplexwertiger Zeiger}
+            \begin{exampleblock}<3->{Komplexwertiger Zeiger}
                 \begin{equation*}
                     \zeta(x, t)
                     =
@@ -160,17 +187,17 @@
                     \frac{C}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
                 \end{equation*}
             \end{block}
-            \begin{block}<2->{Integriert über die Blende}
-                \begin{align*}
-                    E(y_p, t)
-                    &=
-                    \int_{y_b}^{y_b + b} E(r) \cdot \zeta(r, t) \cdot \,dy \\
-                    &=
-                    \int_{y_b}^{y_b+b}C\zeta_0 \cdot \frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
-                    \end{align*}
-            \end{block}      
         \end{column}
     \end{columns}
+    \begin{block}<2->{Integriert über die Blende}
+        \begin{equation*}
+            E(y_p, t)
+            =
+            \int_{y_b}^{y_b + b} E(r) \cdot \zeta(r, t) \cdot \,dy
+            =
+            \int_{y_b}^{y_b+b}C\zeta_0 \cdot \frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+            \end{equation*}
+    \end{block}
 \end{frame}
 
 \begin{frame}{Grundlagen - Beugungsintegral}
@@ -193,8 +220,86 @@
             E(y_p, t)
             =
             C\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
-            .
-            \end{equation*}
+        \end{equation*}
+        \begin{itemize}
+            \item<4-> \textcolor{alert}{Nicht fundamental auflösbar}
+            \item<5-> Fresnel- und Fraunhofer-Approximationen
+        \end{itemize}
     \end{exampleblock}
-    \strut \only<4->{\alert<4->{Nicht fundamental auflösbar} $\Longrightarrow$ Fresnel \& Fraunhofer Approximationen}  
+    % \strut \only<4->{\alert<4->{Nicht fundamental auflösbar} $\Longrightarrow$ Fresnel \& Fraunhofer Approximationen}  
+\end{frame}
+
+\begin{frame}{Grundlagen - Fresnel-Approximation}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/derivation.pdf}
+        \end{column}
+
+        \begin{column}<1->{0.5\textwidth}
+            \begin{alertblock}<1->{Bedingung für Fresnel-Approx.}
+                \begin{equation*}
+                    y, y_p
+                    \ll
+                    l
+                \end{equation*}
+            \end{alertblock}
+            \begin{block}<2->{Binominalexpansion}
+                \begin{equation*}
+                    (1 + \varepsilon)^n
+                    \approx
+                    1 + n\varepsilon
+                \end{equation*}
+                \centering
+                Gültig für $\varepsilon \ll 1$
+            \end{block}
+        \end{column}
+    \end{columns}
+    \begin{block}<3->{Abstand Quelle zu Auswertungspunkt}
+        \begin{equation*}
+            r
+            =
+            l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
+            \approx
+            l \left(1 - \frac{(y_p-y)^2}{2l^2}\right)
+            =
+            l - \frac{(y_p-y)^2}{2l}
+        \end{equation*}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Grundlagen - Fresnel-Approximation}
+    \begin{columns}
+        \begin{column}<1->{0.5\textwidth}
+            \begin{block}<1->{Allgemeines Beugungsintegral}
+                \begin{equation*}
+                    E(y_p, t)
+                    =
+                    C\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+                \end{equation*}
+            \end{block}
+        \end{column}
+        \begin{column}<1->{0.5\textwidth}
+            \begin{block}<1->{Abstand Quelle zu Auswert.}
+                \begin{equation*}
+                    r
+                    =
+                    l - \frac{(y_p-y)^2}{2l}
+                \end{equation*}
+            \end{block}
+        \end{column}
+    \end{columns}
+
+    \begin{exampleblock}<2->{Vereinfachtes Beugungsintegral}
+        \begin{equation*}
+            E(y_p, t)
+            =
+            C\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
+        \end{equation*}
+        \begin{itemize}
+            \item<3-> Nenner immer noch zu komplex
+            \item<4-> Soll zum Zeitpunkt $t=0$ berechnet werden
+        \end{itemize}
+
+    \end{exampleblock}
 \end{frame}
