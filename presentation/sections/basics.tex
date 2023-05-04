@@ -270,8 +270,8 @@
 
 \begin{frame}{Grundlagen - Fresnel-Approximation}
     \begin{columns}
-        \begin{column}<1->{0.5\textwidth}
-            \begin{block}<1->{Allgemeines Beugungsintegral}
+        \begin{column}[t]<1->{0.5\textwidth}
+            \begin{block}<1->{\strut Allgemeines Beugungsintegral}
                 \begin{equation*}
                     E(y_p, t)
                     =
@@ -279,8 +279,8 @@
                 \end{equation*}
             \end{block}
         \end{column}
-        \begin{column}<1->{0.5\textwidth}
-            \begin{block}<1->{Abstand Quelle zu Auswert.}
+        \begin{column}[t]<1->{0.5\textwidth}
+            \begin{block}<1->{\strut Abstand Quelle zu Auswert.}
                 \begin{equation*}
                     r
                     =
@@ -302,4 +302,37 @@
         \end{itemize}
 
     \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Grundlagen - Fraunhofer-Approximation}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/derivation.pdf}
+        \end{column}
+
+        \begin{column}<1->{0.5\textwidth}
+            \begin{alertblock}<1->{Bedingung für Fraunhofer-Approx.}
+                \begin{equation*}
+                    y
+                    \ll
+                    y_p
+                    \ll
+                    l
+                \end{equation*}
+            \end{alertblock}
+            \begin{block}<2->{Auswertung zum Zeitpunkt $t=0$}
+                \begin{itemize}
+                    \item Verändert nur Momentanwert
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    \begin{block}<3->{Vereinfachung der Fresnel-Approx.}
+        \begin{equation*}
+            E(y_p, t=0)
+            =
+            C\zeta_0 \cdot \cancel{e^{j\omega t} \cdot} e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
+        \end{equation*}
+    \end{block}
 \end{frame}
