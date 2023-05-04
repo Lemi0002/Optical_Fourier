@@ -1,0 +1,312 @@
+\section{Beugungsintegral}
+
+\tikzstyle{my arrow} = [draw=main!80!background, very thick, single arrow, minimum height=6.5cm, shape border rotate =#1, fill=main!10!background]`
+
+\begin{frame}{Beugungsintegral - Schlachtplan}
+    \begin{columns}
+    \begin{column}{0.2\textwidth}
+        \centering
+        \begin{tikzpicture}<1->[overlay]
+            \node at (3,0) [my arrow=-180] {\rotatebox{90}{\large{Von der Beugung zu Fourier}}};
+        \end{tikzpicture}
+    \end{column}    
+
+    \begin{column}{0.8\textwidth}
+        
+        \begin{block}<2->{Allgemeines Beugungsintegral}
+            \begin{itemize}
+                \item Summierung vieler Einzelwellen
+            \end{itemize}
+        \end{block}
+        \begin{block}<3->{Fresnelapproximation}
+        \begin{itemize}
+            \item Für kleine Winkel
+        \end{itemize}
+    \end{block}
+    \begin{block}<4->{Fraunhoferapproximation}
+        \begin{itemize}
+            \item Linearisierung in $y$
+        \end{itemize}
+    \end{block}
+    \begin{exampleblock}<5->{Fourierintegral}
+        \begin{itemize}
+            \item Optische Fouriertransformation
+        \end{itemize}
+    \end{exampleblock}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Beugungsintegral - Allgemein}
+    \begin{center}
+        \includegraphics[width=0.6\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/derivation.pdf}
+    \end{center}
+    \begin{block}{Geometrie}
+        \begin{equation*}
+            r
+            =
+            \sqrt{l^2 + (y_p-y)^2}
+            =
+            l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
+        \end{equation*}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Beugungsintegral - Allgemein}
+    \begin{columns}
+        \begin{column}{0.475\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/derivation.pdf}
+        \end{column}
+
+        \begin{column}<1->{0.475\textwidth}
+            \begin{block}<1->{Geometrie}
+                \begin{equation*}
+                    r
+                    =
+                    \sqrt{l^2 + (y_p-y)^2}
+                    =
+                    l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
+                \end{equation*}
+            \end{block}
+            \begin{block}<1->{Viele kleine Einflüsse}
+                \begin{equation*}
+                    dE
+                    =
+                    E(r) \cdot \zeta(r, t) \cdot dy
+                    =
+                    \frac{C}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
+                \end{equation*}
+            \end{block}
+        \end{column}
+    \end{columns}
+    \begin{block}<2->{Integriert über die Blende}
+        \begin{equation*}
+            E(y_p, t)
+            =
+            \int_{y_b}^{y_b + b} E(r) \cdot \zeta(r, t) \cdot \,dy
+            =
+            \int_{y_b}^{y_b+b}C\zeta_0 \cdot \frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+            \end{equation*}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Beugungsintegral - Allgemein}
+    \begin{columns}
+        \begin{column}[t, onlytextwidth]{0.475\textwidth}
+            \begin{block}<1->{\strut Integriert über die Blende (cont.)}
+                \begin{equation*}
+                    E(y_p, t)
+                    =
+                    C\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+                    \end{equation*}
+            \end{block}
+        \end{column}
+        \begin{column}[t, onlytextwidth]{0.475\textwidth}
+            \begin{block}<2->{\strut Blendenfunktion anstatt ein einzelner Spalt}
+                \begin{equation*}
+                    f(y)
+                    \in
+                    [0, 1]
+                    \end{equation*}
+            \end{block}
+        \end{column}
+    \end{columns}
+    \begin{exampleblock}<3->{Allgemeines Beugungsintegral}
+        \begin{equation*}
+            E(y_p, t)
+            =
+            C\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+        \end{equation*}
+        \begin{itemize}
+            \item<4-> \textcolor{alert}{Nicht in geschlossener Form auflösbar}
+            \item<5-> Fresnel- und Fraunhofer-Approximationen
+        \end{itemize}
+    \end{exampleblock}
+    % \strut \only<4->{\alert<4->{Nicht fundamental auflösbar} $\Longrightarrow$ Fresnel \& Fraunhofer Approximationen}  
+\end{frame}
+
+\begin{frame}{Beugungsintegral - Fresnel}
+    \begin{columns}
+        \begin{column}[onlytextwidth]{0.475\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/derivation.pdf}
+        \end{column}
+
+        \begin{column}[onlytextwidth]<1->{0.475\textwidth}
+            \begin{alertblock}<1->{Bedingung für die Fresnel-Approximation}
+                \begin{equation*}
+                    y, y_p
+                    \ll
+                    l
+                \end{equation*}
+            \end{alertblock}
+            \begin{block}<2->{Binominalexpansion}
+                \begin{equation*}
+                    (1 + \varepsilon)^n
+                    \approx
+                    1 + n\varepsilon
+                \end{equation*}
+                \centering
+                Gültig für $\varepsilon \ll 1$
+            \end{block}
+        \end{column}
+    \end{columns}
+    \begin{block}<3->{Abstand Quelle zu Auswertungspunkt}
+        \begin{equation*}
+            r
+            =
+            l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
+            \approx
+            l \left(1 - \frac{(y_p-y)^2}{2l^2}\right)
+            =
+            l - \frac{(y_p-y)^2}{2l}
+        \end{equation*}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Beugungsintegral - Fresnel}
+    \begin{columns}
+        \begin{column}[t, onlytextwidth]<1->{0.475\textwidth}
+            \begin{block}<1->{\strut Allgemeines Beugungsintegral}
+                \begin{equation*}
+                    E(y_p, t)
+                    =
+                    C\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\alert{\vec{r}})}}{\alert{r}} \,dy
+                \end{equation*}
+            \end{block}
+        \end{column}
+        \begin{column}[t, onlytextwidth]<1->{0.475\textwidth}
+            \begin{block}<1->{\strut Abstand Quelle zu Auswertungszeitpunkt}
+                \begin{equation*}
+                    r
+                    =
+                    l - \frac{(y_p-y)^2}{2l}
+                \end{equation*}
+            \end{block}
+        \end{column}
+    \end{columns}
+
+    \begin{block}<2->{Vereinfachtes Beugungsintegral}
+        \begin{equation*}
+            E(y_p, t)
+            =
+            C\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
+        \end{equation*}
+        \begin{itemize}
+            \item<3-> Nenner immer noch zu komplex
+            \item<4-> Soll zum Zeitpunkt $t=0$ berechnet werden
+        \end{itemize}
+
+    \end{block}
+\end{frame}
+
+\begin{frame}{Beugungsintegral - Fresnel}
+    \begin{columns}
+        \begin{column}<1->{0.475\textwidth}
+            \begin{alertblock}<1->{\strut Bedingungen}
+                \begin{align*}
+                    (y_p - y)^2
+                    &\ll
+                    l \qquad\qquad k
+                    =
+                    \frac{2\pi}{\lambda}
+                    \gg
+                    1
+                    \\
+                    t
+                    &=
+                    0
+                \end{align*}
+            \end{alertblock}
+        \end{column}
+        \begin{column}<1->{0.475\textwidth}
+            \begin{block}<1->{\strut Nenner vereinfachen}
+                \begin{equation*}
+                    r
+                    =
+                    l - \frac{(y_p-y)^2}{2l}
+                    \approx
+                    l
+                \end{equation*}
+            \end{block}
+        \end{column}
+    \end{columns}
+
+    \begin{block}<2->{Vereinfachtes Beugungsintegral}
+        \begin{equation*}
+            E(y_p, t)
+            =
+            C\zeta_0 \cdot \alert{e^{j\omega t}} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{\alert{l - \frac{(y_p-y)^2}{2l}}} \,dy
+        \end{equation*}
+    \end{block}
+    \begin{exampleblock}<3->{Fresnel-Beugungsintegral}
+        \begin{equation*}
+            E(y_p)
+            =
+            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
+        \end{equation*}
+        \begin{itemize}
+            \item<4-> Komplizierter Exponent $\Rightarrow$ Fraunhofer-Approximation
+        \end{itemize}
+
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Beugungsintegral - Fraunhofer}
+    \begin{columns}
+        \begin{column}[onlytextwidth]{0.47\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/derivation.pdf}
+        \end{column}
+        \begin{column}[onlytextwidth]<1->{0.47\textwidth}
+            \begin{alertblock}<1->{Bedingung für Fraunhofer-Approximation}
+                \begin{equation*}
+                    y
+                    \ll
+                    y_p
+                    \ll
+                    l
+                \end{equation*}
+            \end{alertblock}
+            \begin{block}<2->{Linearisierung in y}
+                \begin{equation*}
+                    y_p^2 - 2y_py + y^2 \approx y_p^2 - 2y_py
+                \end{equation*}
+            \end{block}
+        \end{column}
+    \end{columns}
+    \begin{block}<3->{Einsetzen in die Fresnel Approximation}
+        \begin{align*}
+            E(y_p)
+            &=
+            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(\alert{y_p^2 - 2y_py + y^2})}{2l}} \,dy
+            \\
+            &\approx
+            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
+        \end{align*}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Beugungsintegral - Fraunhofer}
+    \begin{block}<1->{Einsetzen in die Fresnel Approximation (cont.)}
+        \begin{align*}
+            E(y_p)
+            &\approx
+            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
+            \\
+            &=
+            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot e^{jk\frac{y_p^2}{2l}} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jk\frac{y_py}{l}} \,dy
+            \\
+            &=
+            \frac{C\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
+        \end{align*}
+    \end{block}
+    \begin{exampleblock}<2->{Fouriertransformation der Blendenfunktion}
+        \begin{align*}
+            E(y_p)
+            &=
+            C \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jy_py} \,dy
+        \end{align*}
+    \end{exampleblock}
+\end{frame}

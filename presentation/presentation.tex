@@ -23,11 +23,13 @@
 % PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[9pt]{beamer}
+\documentclass[9pt, aspectratio=169]{beamer}
 \usepackage[ngerman]{babel}
 \usepackage{cancel}
 \usepackage{catchfile}                      % used for gitHash extraction
 \usepackage{xstring}                        % used for gitHash extraction
+\usepackage{tikz}
+\usepgflibrary{shapes.arrows}
 
 \usetheme{focus}
 
@@ -60,7 +62,7 @@
 \begin{frame}[plain]
     \begin{tikzpicture}[overlay, remember picture]
         \node[inner sep=0pt] at (current page.center)
-        {\includegraphics[height=\pdfpageheight]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/jamesWebb_publicDomain.png}};
+        {\includegraphics[height=\pdfpagewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/jamesWebb_publicDomain.png}};
     \end{tikzpicture}
 \end{frame}
 
@@ -82,6 +84,7 @@
 
 % Sections
 \input{sections/basics.tex}
+\input{sections/diffraction.tex}
 \input{sections/experiment.tex}
 \input{sections/examples.tex}
 
@@ -90,7 +93,7 @@
 \begin{frame}[noframenumbering]
     \begin{tikzpicture}[overlay, remember picture]
         \node[inner sep=0pt] at (current page.center)
-        {\includegraphics[height=\pdfpageheight]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/jamesWebb_publicDomain.png}};
+        {\includegraphics[height=\pdfpagewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/jamesWebb_publicDomain.png}};
     \end{tikzpicture}
 \end{frame}
 
