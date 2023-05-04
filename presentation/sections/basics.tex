@@ -67,7 +67,7 @@
                     u^2 \cdot \frac{\partial^2\zeta(x, t)}{\partial x^2}
                 \end{equation*}
             \end{block}
-            \begin{block}<2->{Welle aus Physik 3 \cite{opt:HSR:Physik2}}
+            \begin{block}<2->{\strut Welle aus Physik 3 \cite{opt:HSR:Physik2}}
                 \begin{align*}
                     \zeta(x, t)
                     &=
@@ -306,13 +306,12 @@
 
 \begin{frame}{Grundlagen - Fraunhofer-Approximation}
     \begin{columns}
-        \begin{column}{0.5\textwidth}
+        \begin{column}[onlytextwidth]{0.47\textwidth}
             \centering
             \includegraphics[width=\linewidth]{../../SeminarHarmonischeAnalysis/buch/papers/opt/images/derivation.pdf}
         \end{column}
-
-        \begin{column}<1->{0.5\textwidth}
-            \begin{alertblock}<1->{Bedingung für Fraunhofer-Approx.}
+        \begin{column}[onlytextwidth]<1->{0.47\textwidth}
+            \begin{alertblock}<1->{Bedingung für Fraunhofer-Approx}
                 \begin{equation*}
                     y
                     \ll
@@ -321,18 +320,44 @@
                     l
                 \end{equation*}
             \end{alertblock}
-            \begin{block}<2->{Auswertung zum Zeitpunkt $t=0$}
-                \begin{itemize}
-                    \item Verändert nur Momentanwert
-                \end{itemize}
+            \begin{block}<2->{Vereinfachung}
+                \begin{equation*}
+                    y_p^2 - 2y_py + y^2 \approx y_p^2 - 2y_py
+                \end{equation*}
             \end{block}
         \end{column}
     \end{columns}
-    \begin{block}<3->{Vereinfachung der Fresnel-Approx.}
-        \begin{equation*}
-            E(y_p, t=0)
-            =
-            C\zeta_0 \cdot \cancel{e^{j\omega t} \cdot} e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
-        \end{equation*}
+    \begin{block}<3->{Einsetzen in die Fresnel Approximation}
+        \begin{align*}
+            E(y_p)
+            &=
+            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(\alert{y_p^2 - 2y_py + y^2})}{2l}} \,dy
+            \\
+            &\approx
+            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
+        \end{align*}
     \end{block}
+\end{frame}
+
+\begin{frame}{Grundlagen - Fraunhofer-Approximation}
+    \begin{block}<1->{Einsetzen in die Fresnel Approximation (cont.)}
+        \begin{align*}
+            E(y_p)
+            &\approx
+            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
+            \\
+            &=
+            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot e^{jk\frac{y_p^2}{2l}} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jk\frac{y_py}{l}} \,dy
+            \\
+            &=
+            \frac{C\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
+        \end{align*}
+    \end{block}
+    \begin{exampleblock}<2->{Fouriertransformation der Blendenfunktion}
+        \begin{align*}
+            E(y_p)
+            &=
+            C \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jy_py} \,dy
+        \end{align*}
+    \end{exampleblock}
 \end{frame}
