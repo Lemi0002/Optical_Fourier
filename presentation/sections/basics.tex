@@ -275,7 +275,7 @@
                 \begin{equation*}
                     E(y_p, t)
                     =
-                    C\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+                    C\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\alert{\vec{r}})}}{\alert{r}} \,dy
                 \end{equation*}
             \end{block}
         \end{column}
@@ -290,7 +290,7 @@
         \end{column}
     \end{columns}
 
-    \begin{exampleblock}<2->{Vereinfachtes Beugungsintegral}
+    \begin{block}<2->{Vereinfachtes Beugungsintegral}
         \begin{equation*}
             E(y_p, t)
             =
@@ -299,6 +299,58 @@
         \begin{itemize}
             \item<3-> Nenner immer noch zu komplex
             \item<4-> Soll zum Zeitpunkt $t=0$ berechnet werden
+        \end{itemize}
+
+    \end{block}
+\end{frame}
+
+\begin{frame}{Grundlagen - Fresnel-Approximation}
+    \begin{columns}
+        \begin{column}<1->{0.5\textwidth}
+            \begin{alertblock}<1->{\strut Bedingungen}
+                \begin{align*}
+                    (y_p - y)^2
+                    &\ll
+                    l \qquad\qquad k
+                    =
+                    \frac{2\pi}{\lambda}
+                    \gg
+                    1
+                    \\
+                    t
+                    &=
+                    0
+                \end{align*}
+            \end{alertblock}
+        \end{column}
+        \begin{column}<1->{0.5\textwidth}
+            \begin{block}<1->{\strut Nenner vereinfachen}
+                \begin{equation*}
+                    r
+                    =
+                    l - \frac{(y_p-y)^2}{2l}
+                    \approx
+                    l
+                \end{equation*}
+            \end{block}
+        \end{column}
+    \end{columns}
+
+    \begin{block}<2->{Vereinfachtes Beugungsintegral}
+        \begin{equation*}
+            E(y_p, t)
+            =
+            C\zeta_0 \cdot \alert{e^{j\omega t}} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{\alert{l - \frac{(y_p-y)^2}{2l}}} \,dy
+        \end{equation*}
+    \end{block}
+    \begin{exampleblock}<3->{Fresnel-Beugungsintegral}
+        \begin{equation*}
+            E(y_p)
+            =
+            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
+        \end{equation*}
+        \begin{itemize}
+            \item<4-> Komplizierter Exponent $\Rightarrow$ Fraunhofer-Approximation
         \end{itemize}
 
     \end{exampleblock}
