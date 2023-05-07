@@ -4,37 +4,36 @@
 
 \begin{frame}{Beugungsintegral - Schlachtplan}
     \begin{columns}
-    \begin{column}{0.2\textwidth}
-        \centering
-        \begin{tikzpicture}<1->[overlay]
-            \node at (3,0) [my arrow=-180] {\rotatebox{90}{\large{Von der Beugung zu Fourier}}};
-        \end{tikzpicture}
-    \end{column}    
+        \begin{column}{0.2\textwidth}
+            \centering
+            \begin{tikzpicture}<1->[overlay]
+                \node at (3,0) [my arrow=-180] {\rotatebox{90}{\large{Von der Beugung zu Fourier}}};
+            \end{tikzpicture}
+        \end{column}    
 
-    \begin{column}{0.8\textwidth}
-        
-        \begin{block}<2->{Allgemeines Beugungsintegral}
-            \begin{itemize}
-                \item Summierung vieler Einzelwellen
-            \end{itemize}
-        \end{block}
-        \begin{block}<3->{Fresnelapproximation}
-        \begin{itemize}
-            \item Für kleine Winkel
-        \end{itemize}
-    \end{block}
-    \begin{block}<4->{Fraunhoferapproximation}
-        \begin{itemize}
-            \item Linearisierung in $y$
-        \end{itemize}
-    \end{block}
-    \begin{exampleblock}<5->{Fourierintegral}
-        \begin{itemize}
-            \item Optische Fouriertransformation
-        \end{itemize}
-    \end{exampleblock}
-\end{column}
-\end{columns}
+        \begin{column}{0.8\textwidth}
+            \begin{block}<2->{Allgemeines Beugungsintegral}
+                \begin{itemize}
+                    \item Summierung vieler Einzelwellen
+                \end{itemize}
+            \end{block}
+            \begin{block}<3->{Fresnel-Approximation}
+                \begin{itemize}
+                    \item Für kleine Winkel
+                \end{itemize}
+            \end{block}
+            \begin{block}<4->{Fraunhofer-Approximation}
+                \begin{itemize}
+                    \item Linearisierung in $y$
+                \end{itemize}
+            \end{block}
+            \begin{exampleblock}<5->{Fourierintegral}
+                \begin{itemize}
+                    \item Optische Fouriertransformation
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Beugungsintegral - Allgemein}
@@ -69,7 +68,7 @@
                     l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
                 \end{equation*}
             \end{block}
-            \begin{block}<1->{Viele kleine Einflüsse}
+            \begin{block}<1->{Auswirkung einer Quelle}
                 \begin{equation*}
                     dE
                     =
@@ -80,7 +79,7 @@
             \end{block}
         \end{column}
     \end{columns}
-    \begin{block}<2->{Integriert über die Blende}
+    \begin{block}<2->{Auswirkung aller Quellen}
         \begin{equation*}
             E(y_p, t)
             =
