@@ -1,6 +1,6 @@
 \section{Beugungsintegral}
 
-\tikzstyle{my arrow} = [draw=main!80!background, very thick, single arrow, minimum height=6.5cm, shape border rotate =#1, fill=main!10!background]`
+\tikzstyle{my arrow} = [draw=main!80!background, very thick, single arrow, minimum height=6.5cm, shape border rotate =#1, fill=main!10!background]
 
 \begin{frame}{Beugungsintegral - Schlachtplan}
     \begin{columns}
@@ -258,7 +258,7 @@
             \begin{column}{0.4\textwidth}
                 \begin{itemize}
                     \item<4-> Komplizierter Exponent $\Rightarrow$ Fraunhofer-Approximation
-                    \item<4-> Fraunhofer-Approximation
+                    % \item<4-> Fraunhofer-Approximation
                 \end{itemize}
             \end{column}
         \end{columns}
@@ -294,8 +294,10 @@
             &=
             \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(\alert{y_p^2 - 2y_py + y^2})}{2l}} \,dy
             \\
-            &\approx
-            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
+            \uncover<4->{
+                &\approx
+                \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
+            }
         \end{align*}
     \end{block}
 \end{frame}
@@ -307,14 +309,18 @@
             &\approx
             \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
             \\
-            &=
-            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot e^{jk\frac{y_p^2}{2l}} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jk\frac{y_py}{l}} \,dy
+            \uncover<2->{
+                &=
+                \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot e^{jk\frac{y_p^2}{2l}} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jk\frac{y_py}{l}} \,dy
+            }
             \\
-            &=
-            \frac{C\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
+            \uncover<3->{
+                &=
+                \frac{C\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
+            }
         \end{align*}
     \end{block}
-    \begin{exampleblock}<2->{Fouriertransformation der Blendenfunktion}
+    \begin{exampleblock}<4->{Fouriertransformation der Blendenfunktion}
         \begin{align*}
             E(y_p)
             &=
