@@ -87,7 +87,12 @@
             \int_{y_b}^{y_b + b} E(r) \cdot \zeta(r, t) \cdot \,dy
             =
             \int_{y_b}^{y_b+b}C\zeta_0 \cdot \frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
-            \end{equation*}
+        \end{equation*}
+        \vspace*{-0.5\baselineskip}
+        \begin{itemize}
+            \item<3-> Noch nicht allgemein genug
+            \item<4-> Verschiedene Blenden sollen modeliert werden können
+        \end{itemize}
     \end{block}
 \end{frame}
 
@@ -156,9 +161,9 @@
         \begin{equation*}
             r
             =
-            l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
+            l \alert{\sqrt{\normalcolor{1 + \frac{(y_p-y)^2}{l^2}}}}
             \approx
-            l \left(1 - \frac{(y_p-y)^2}{2l^2}\right)
+            l \left(1 - \frac{(y_p-y)^2}{\alert{2}l^2}\right)
             =
             l - \frac{(y_p-y)^2}{2l}
         \end{equation*}
@@ -241,15 +246,23 @@
         \end{equation*}
     \end{block}
     \begin{exampleblock}<3->{Fresnel-Beugungsintegral}
-        \begin{equation*}
-            E(y_p)
-            =
-            \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
-        \end{equation*}
-        \begin{itemize}
-            \item<4-> Komplizierter Exponent $\Rightarrow$ Fraunhofer-Approximation
-        \end{itemize}
-
+        \begin{columns}
+            \begin{column}{0.6\textwidth}
+                \vspace*{\baselineskip}
+                \begin{equation*}
+                    E(y_p)
+                    =
+                    \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
+                \end{equation*}
+                \vspace*{0.2\baselineskip}
+            \end{column}
+            \begin{column}{0.4\textwidth}
+                \begin{itemize}
+                    \item<4-> Komplizierter Exponent $\Rightarrow$ Fraunhofer-Approximation
+                    \item<4-> Fraunhofer-Approximation
+                \end{itemize}
+            \end{column}
+        \end{columns}
     \end{exampleblock}
 \end{frame}
 
