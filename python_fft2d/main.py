@@ -52,26 +52,27 @@ image_reconstructed_lowpass = numpy.fft.ifft2(image_fourier_lowpass)
 image_reconstructed_highpass = numpy.fft.ifft2(image_fourier_highpass)
 
 # Generate output files
+plot.rcParams.update({'font.size': 18})
 plot.imshow(image, cmap='gray')
-plot.savefig(os.path.join(output_path, "image.png"))
+plot.savefig(os.path.join(output_path, "harold.png"))
 
 plot.imshow(numpy.log(abs(image_fourier),
             where=abs(image_fourier) > 0), cmap='gray')
-plot.savefig(os.path.join(output_path, "image_fourier.png"))
+plot.savefig(os.path.join(output_path, "harold_fourier.png"))
 
 plot.imshow(numpy.log(abs(image_fourier_lowpass),
             where=abs(image_fourier_lowpass) > 0), cmap='gray')
-plot.savefig(os.path.join(output_path, "image_fourier_lowpass.png"))
+plot.savefig(os.path.join(output_path, "harold_fourier_lowpass.png"))
 
 plot.imshow(numpy.log(abs(image_fourier_highpass),
             where=abs(image_fourier_highpass) > 0), cmap='gray')
-plot.savefig(os.path.join(output_path, "image_fourier_highpass.png"))
+plot.savefig(os.path.join(output_path, "harold_fourier_highpass.png"))
 
 plot.imshow(abs(image_reconstructed), cmap='gray')
-plot.savefig(os.path.join(output_path, "image_reconstructed.png"))
+plot.savefig(os.path.join(output_path, "harold_reconstructed.png"))
 
 plot.imshow(abs(image_reconstructed_lowpass), cmap='gray')
-plot.savefig(os.path.join(output_path, "image_reconstructed_lowpass.png"))
+plot.savefig(os.path.join(output_path, "harold_reconstructed_lowpass.png"))
 
 plot.imshow(abs(image_reconstructed_highpass), cmap='gray')
-plot.savefig(os.path.join(output_path, "image_reconstructed_highpass.png"))
+plot.savefig(os.path.join(output_path, "harold_reconstructed_highpass.png"))
