@@ -26,7 +26,7 @@ class Aperture:
                         numpy.sin(frequency * y / self.frequency_scale)
                     self.canvas[y, :] = self.canvas[y, :] + intensity
 
-            case default:
+            case _:
                 raise ValueError(
                     f"Direction has to be x or y but is {direction}")
 
@@ -56,7 +56,8 @@ def image_filter(image, radius, highpass=True):
     for x in range(size_x):
         for y in range(size_y):
             distance = numpy.sqrt((position_x - x)**2 + (position_y - y)**2)
-            if (highpass == False and radius < distance) or (highpass == True and radius >= distance):
+            if ((highpass is False and radius < distance) or
+                    (highpass is True and radius >= distance)):
                 image_modified[x][y] = 0
 
     return image_modified

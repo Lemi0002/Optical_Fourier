@@ -1,5 +1,6 @@
 """
-Script to evaluate the correspondence between a frequency and its position on the Fourier plane.
+Script to evaluate the correspondence between a frequency and its
+position on the Fourier plane.
 """
 
 import matplotlib.pyplot as plot
@@ -9,8 +10,8 @@ from filter_module import Aperture, image_filter
 
 output_path = "output"
 
-frequency_scale = 10 #2pi equals to frequency_scale * 2pi
-width = 20*int(frequency_scale*2*numpy.pi) #allow multiple repetitions for better spectrum
+frequency_scale = 10  # 2pi equals to frequency_scale * 2pi
+width = 20*int(frequency_scale*2*numpy.pi)  # repetitions for better spectrum
 height = width
 
 # Create sin wave with superposition of multiple waves
@@ -28,7 +29,7 @@ plot.imshow(aperture.canvas, cmap='gray')
 # FFT2
 plot.subplot(142)
 fourier = numpy.fft.fftshift(numpy.fft.fft2(aperture.canvas))
-plot.imshow(abs(fourier), cmap='gray', vmax = 6e7)
+plot.imshow(abs(fourier), cmap='gray', vmax=6e7)
 x_width = 50
 y_width = 50
 plot.xlim(int(width/2 - x_width), int(width/2 + x_width))
@@ -37,7 +38,7 @@ plot.ylim(int(height/2 - y_width), int(height/2 + y_width))
 # FFT2 after filter
 plot.subplot(143)
 image_fourier_lowpass = image_filter(fourier, 30, highpass=True)
-plot.imshow(abs(image_fourier_lowpass), cmap="gray", vmax = 6e7)
+plot.imshow(abs(image_fourier_lowpass), cmap="gray", vmax=6e7)
 plot.xlim(int(width/2 - x_width), int(width/2 + x_width))
 plot.ylim(int(height/2 - y_width), int(height/2 + y_width))
 

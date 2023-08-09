@@ -1,4 +1,3 @@
-import math
 import os
 import numpy
 import matplotlib.pyplot as plot
@@ -12,7 +11,7 @@ def convertPattern(name, output_path="patternRecon/output"):
     try:
         image_input = pil.Image.open(input_path)
         image = image_input.convert("L")
-        image_rgb = image_input.convert("RGB")
+        # image_rgb = image_input.convert("RGB")
     except FileNotFoundError as exception:
         print(exception)
         exit()
