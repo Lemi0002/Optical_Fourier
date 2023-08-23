@@ -1,7 +1,7 @@
 import math
 import os
 import numpy
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 import PIL as pil
 
 # Relative to this file
@@ -53,27 +53,27 @@ image_reconstructed_lowpass = numpy.fft.ifft2(image_fourier_lowpass)
 image_reconstructed_highpass = numpy.fft.ifft2(image_fourier_highpass)
 
 # Generate output files
-plot.rcParams.update({'font.size': 18})
-plot.imshow(image, cmap='gray')
-plot.savefig(os.path.join(output_path, "harold.png"))
+plt.rcParams.update({'font.size': 18})
+plt.imshow(image, cmap='gray')
+plt.savefig(os.path.join(output_path, "harold.png"))
 
-plot.imshow(numpy.log(abs(image_fourier),
+plt.imshow(numpy.log(abs(image_fourier),
             where=abs(image_fourier) > 0), cmap='gray')
-plot.savefig(os.path.join(output_path, "harold_fourier.png"))
+plt.savefig(os.path.join(output_path, "harold_fourier.png"))
 
-plot.imshow(numpy.log(abs(image_fourier_lowpass),
+plt.imshow(numpy.log(abs(image_fourier_lowpass),
             where=abs(image_fourier_lowpass) > 0), cmap='gray')
-plot.savefig(os.path.join(output_path, "harold_fourier_lowpass.png"))
+plt.savefig(os.path.join(output_path, "harold_fourier_lowpass.png"))
 
-plot.imshow(numpy.log(abs(image_fourier_highpass),
+plt.imshow(numpy.log(abs(image_fourier_highpass),
             where=abs(image_fourier_highpass) > 0), cmap='gray')
-plot.savefig(os.path.join(output_path, "harold_fourier_highpass.png"))
+plt.savefig(os.path.join(output_path, "harold_fourier_highpass.png"))
 
-plot.imshow(abs(image_reconstructed), cmap='gray')
-plot.savefig(os.path.join(output_path, "harold_reconstructed.png"))
+plt.imshow(abs(image_reconstructed), cmap='gray')
+plt.savefig(os.path.join(output_path, "harold_reconstructed.png"))
 
-plot.imshow(abs(image_reconstructed_lowpass), cmap='gray')
-plot.savefig(os.path.join(output_path, "harold_reconstructed_lowpass.png"))
+plt.imshow(abs(image_reconstructed_lowpass), cmap='gray')
+plt.savefig(os.path.join(output_path, "harold_reconstructed_lowpass.png"))
 
-plot.imshow(abs(image_reconstructed_highpass), cmap='gray')
-plot.savefig(os.path.join(output_path, "harold_reconstructed_highpass.png"))
+plt.imshow(abs(image_reconstructed_highpass), cmap='gray')
+plt.savefig(os.path.join(output_path, "harold_reconstructed_highpass.png"))

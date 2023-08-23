@@ -46,6 +46,25 @@ class Aperture:
             if (y % period) > b:
                 self.canvas[y, :] = 255
 
+    def add_slit(self, slit_height, slit_width, quantity):
+        """Add one or multiple slits to the canvas
+
+        The single slit has a dimension of height*width and is repeated
+        """
+
+        start_y = int(self.height/2 - slit_height/2)
+        end_y = int(self.height/2 + slit_height/2)
+
+        period = 2*slit_width
+
+        entire_width = slit_width * (2*quantity - 1)
+        start_x = int(self.width/2 - entire_width/2)
+        end_x = int(self.width/2 + entire_width/2)
+
+        for x in range(start_x, end_x):
+            if ((x-start_x) % period) < slit_width:
+                self.canvas[start_y:end_y, x] = 255
+
 
 def image_filter(image, radius, highpass=True):
     image_modified = image.copy()

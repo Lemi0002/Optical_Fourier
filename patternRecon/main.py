@@ -1,6 +1,6 @@
 import os
 import numpy
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 import PIL as pil
 
 
@@ -24,17 +24,17 @@ def convertPattern(name, output_path="patternRecon/output"):
     image_fourier = numpy.fft.fftshift(numpy.fft.fft2(image))
 
     # Generate output files
-    plot.imshow(image, cmap='gray')
-    plot.savefig(os.path.join(output_path, f"input_{name}.png"))
+    plt.imshow(image, cmap='gray')
+    plt.savefig(os.path.join(output_path, f"input_{name}.png"))
 
-    plot.imshow(numpy.log(abs(image_fourier),
+    plt.imshow(numpy.log(abs(image_fourier),
                 where=abs(image_fourier) > 0), cmap='gray')
-    plot.savefig(os.path.join(output_path, f"fourier_{name}.png"))
+    plt.savefig(os.path.join(output_path, f"fourier_{name}.png"))
 
     # Apply inverse fft to all pictures
     image_reconstructed = numpy.fft.ifft2(image_fourier)
-    plot.imshow(abs(image_reconstructed), cmap='gray')
-    plot.savefig(os.path.join(output_path, f"reconstructed_{name}.png"))
+    plt.imshow(abs(image_reconstructed), cmap='gray')
+    plt.savefig(os.path.join(output_path, f"reconstructed_{name}.png"))
 
 
 convertPattern("A")
